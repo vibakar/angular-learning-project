@@ -1,0 +1,15 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "The Jungle Book",
+      "author": "Rudyard Kipling",
+      "isbn": "9788379030651",
+      "publicationDate": "01/11/1985",
+      "publisher": "Macmillan Publishers",
+      "price": "195",
+      "genre": "Adventure",
+      "format": "format1"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<div class="book-detail" *ngIf="bookDetail">
+	<h1>{{bookDetail.title}}</h1>
+	<p><strong>Author</strong>: {{bookDetail.author}}</p>
+	<p><strong>ISBN</strong>: {{bookDetail.isbn}}</p>
+	<p><strong>Publication Date</strong>: {{bookDetail.publicationDate}}</p>
+	<p><strong>Publisher</strong>: {{bookDetail.publisher}}</p>
+	<p><strong>Price</strong>: {{bookDetail.price | currency: 'INR': "symbol" }}</p>
+	<p><strong>Genre</strong>: {{bookDetail.genre}}</p>
+	<p><strong>Format</strong>: {{bookDetail.format}}</p>
+	<button mat-stroked-button color="primary" (click)="backToHome()">&lt;&lt;&nbsp;Back</button>
+</div>
+
+<div class="book-detail" *ngIf="!bookDetail">
+	<p>No Details Found</p>
+	<button mat-stroked-button color="primary" (click)="backToHome()">&lt;&lt;&nbsp;Back</button>
+</div>

@@ -1,0 +1,45 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.table-header {
+  height: 40px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.choose-fields {
+  padding: 20px 0px 0px 10px;
+}
+
+.customize-container {
+  margin-bottom: 20px;
+}
+
+.fields-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.field-margin {
+  margin: 0 10px;
+}
+
+.text-center {
+  text-align: center;
+}
