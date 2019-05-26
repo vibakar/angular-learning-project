@@ -6,7 +6,10 @@
       </mat-chip-list>
     </div>
     <div class="float-right">
-      <button mat-raised-button color="primary" (click)="customize=!customize">Customize</button>   
+      <button mat-raised-button color="primary" (click)="addBook()">Add Book
+      </button>&nbsp;
+      <button mat-raised-button color="primary" (click)="customize=!customize">Customize
+      </button>
     </div>
   </div>
   <div *ngIf="customize" class="mat-elevation-z2 customize-container">

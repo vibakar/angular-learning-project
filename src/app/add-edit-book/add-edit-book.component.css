@@ -1,0 +1,17 @@
+.add-book, .form-buttons {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.add-book > * {
+  width: 100%;
+}
+
+.heading {
+	text-align: center;
+	text-decoration: underline;
+}
+
+.form-buttons {
+	margin-bottom: 20px;
+}

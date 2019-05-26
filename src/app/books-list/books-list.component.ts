@@ -3,6 +3,7 @@ import Book from '../models/book';
 import { BooksService } from '../service/books.service';
 import { MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'books-list',
@@ -38,7 +39,7 @@ export class BooksListComponent implements OnInit {
     checked: true
   }];
 
-  constructor(private booksService:BooksService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(private booksService:BooksService, public dialog: MatDialog, public snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit() {
     this.getAllBooks();
@@ -67,7 +68,7 @@ export class BooksListComponent implements OnInit {
   }
 
   showSnackBar(message) {
-    this.snackBar.open(message, 'Ok');
+    this.snackBar.open(message, 'Ok', {duration: 3000});
   }
 
   confirmDelete(id, title) {
@@ -82,4 +83,7 @@ export class BooksListComponent implements OnInit {
     }); 
   }
 
+  addBook() {
+    this.router.navigate(['/addBook']);
+  }
 }

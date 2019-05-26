@@ -16,6 +16,10 @@ export class BooksService {
   	return this.http.get(`${this.configUrl}/${id}`);
   }
 
+  addBook(payload) {
+    return this.http.post(this.configUrl, payload);
+  }
+
   deleteBook(id) {
   	return this.http.delete(`${this.configUrl}/${id}`);
   }
