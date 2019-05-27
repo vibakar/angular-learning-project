@@ -5,7 +5,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -23,6 +22,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AddEditBookComponent } from './add-edit-book/add-edit-book.component';
+import { BooksFilterPipe } from './pipes/books-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { AddEditBookComponent } from './add-edit-book/add-edit-book.component';
     BooksListComponent,
     BookDetailComponent,
     DeleteDialogComponent,
-    AddEditBookComponent
+    AddEditBookComponent,
+    BooksFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,6 @@ import { AddEditBookComponent } from './add-edit-book/add-edit-book.component';
     MatToolbarModule,
     MatTableModule,
     MatButtonModule,
-    MatChipsModule,
     MatCheckboxModule,
     MatDialogModule,
     MatSnackBarModule,

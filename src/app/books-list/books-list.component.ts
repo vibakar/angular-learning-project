@@ -38,7 +38,7 @@ export class BooksListComponent implements OnInit {
     name: "Format",
     checked: true
   }];
-
+  filterValue:string = '';
   constructor(private booksService:BooksService, public dialog: MatDialog, public snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit() {
