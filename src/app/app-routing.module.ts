@@ -11,6 +11,9 @@ const routes: Routes = [{
 	path: 'addBook',
 	component: AddEditBookComponent
 }, {
+	path: 'editBook/:id',
+	component: AddEditBookComponent
+}, {
 	path: 'book/:id',
 	component: BookDetailComponent
 },{

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
+
 import Book from '../models/book';
 import { BooksService } from '../service/books.service';
-import { MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'books-list',

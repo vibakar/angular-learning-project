@@ -10,7 +10,8 @@
       "price": "195",
       "genre": "Adventure",
       "format": "Format1"
-    }, {
+    },
+    {
       "id": 2,
       "title": "The Selfish Giant",
       "author": "Oscar Wilde",
@@ -20,16 +21,17 @@
       "price": "320",
       "genre": "Action",
       "format": "Format2"
-    }, {
+    },
+    {
       "id": 3,
       "title": "The Happy Prince",
       "author": "Oscar Wilde",
-      "isbn": "9278379237120",
-      "publicationDate": "23/05/1888",
+      "isbn": 9278379237120,
+      "publicationDate": "23/5/1888",
       "publisher": "Independent Publishers",
-      "price": "285",
+      "price": 288,
       "genre": "Fiction",
-      "format": "Format3"
+      "format": "Format2"
     }
   ]
 }

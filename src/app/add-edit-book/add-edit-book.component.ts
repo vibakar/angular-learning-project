@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BooksService } from '../service/books.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+
+import { BooksService } from '../service/books.service';
+import Book from '../models/book';
 
 @Component({
   selector: 'app-add-edit-book',
@@ -10,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class AddEditBookComponent implements OnInit {
   maxDate = new Date();
-  genres: string[] = ["Action","Adventure", "Drama", "Fantasy", "Horror", "Humor", "Romance"];
+  genres: string[] = ["Action","Adventure", "Drama", "Fiction", "Fantasy", "Horror", "Humor", "Romance"];
   formats: string[] = ["Format1", "Format2", "Format3"];
   newBook = {
     "title": "",
@@ -18,26 +20,50 @@ export class AddEditBookComponent implements OnInit {
     "isbn": null,
     "publicationDate": "",
     "publisher": "",
-    "price": "",
+    "price": null,
     "genre": "",
     "format": ""
   };
+  bookId:string;
+  selectedPublicationDate;
 
-  constructor(public router:Router, private bookService: BooksService, public snackBar: MatSnackBar) { }
+  constructor(private router:Router, private booksService: BooksService, private snackBar: MatSnackBar, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.bookId = this.route.snapshot.paramMap.get('id');
+    if(this.bookId) {
+      this.getBookDetail();
+    }
   }
 
   cancel() {
   	this.router.navigate(['/']);
   }
 
+  getBookDetail() {
+    this.booksService.getBookDetail(this.bookId).subscribe((data:Book) => {
+      let date = data.publicationDate.split("/");
+      let newFormat = '"' + date[1] + '/' + date[0] + '/' + date[2] + '"';
+      this.selectedPublicationDate = new Date(newFormat);
+      this.newBook = data;
+    });
+  }
+
   addBook() {
-    let date = new Date(this.newBook.publicationDate);
+    let date = new Date(this.selectedPublicationDate);
     this.newBook.publicationDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-  	this.bookService.addBook(this.newBook).subscribe(data => {
+  	this.booksService.addBook(this.newBook).subscribe(data => {
       this.router.navigate(['/']);
-      this.showSnackBar("New Book Added Successfully!");
+      this.showSnackBar(`"${this.newBook.title}" Added Successfully!`);
+    });
+  }
+
+  editBook() {
+    let date = new Date(this.selectedPublicationDate);
+    this.newBook.publicationDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    this.booksService.editBook(this.newBook).subscribe(data => {
+      this.router.navigate(['/']);
+      this.showSnackBar(`"${this.newBook.title}" Updated Successfully!`);
     });
   }
 
