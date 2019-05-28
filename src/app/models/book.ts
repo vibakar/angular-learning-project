@@ -7,7 +7,8 @@ interface Book {
 	"publisher": string,
 	"price": number,
 	"genre": string,
-	"format": string
+	"format": string,
+	"checked"?: boolean
 }
 
 export default Book;

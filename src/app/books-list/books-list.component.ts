@@ -12,7 +12,7 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
   styleUrls: ['./books-list.component.css']
 })
 export class BooksListComponent implements OnInit {
-  columns: string[] = ['Title', 'Author', 'ISBN', 'Publication Date', 'Publisher', 'Price', 'Genre', 'Format', 'Edit', 'Delete'];
+  columns: string[] = ['Checkbox', 'Title', 'Author', 'ISBN', 'Publication Date', 'Publisher', 'Price', 'Genre', 'Format', 'Edit', 'Delete'];
   dataSource: Book[] = [];
   availableFields: any[] = [{
     name: "Title",
@@ -39,7 +39,11 @@ export class BooksListComponent implements OnInit {
     name: "Format",
     checked: true
   }];
-  filterValue:string = '';
+  rootCheckbox: boolean = false;
+  filterValue: string = '';
+  selectedBooks: number[] = [];
+  disableMulDel: boolean = true;
+
   constructor(private booksService:BooksService, public dialog: MatDialog, public snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit() {
@@ -84,7 +88,60 @@ export class BooksListComponent implements OnInit {
     }); 
   }
 
+  confirmMulDelete() {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {title: null }
+    });
+
+    dialogRef.afterClosed().subscribe(response => {
+      if(response == 'yes') {
+        this.delMulBook();
+      }
+    }); 
+  }
+
   addBook() {
     this.router.navigate(['/addBook']);
+  }
+
+  delMulBook() {
+    this.booksService.delMulBook(this.selectedBooks).subscribe(data => {
+        this.selectedBooks = [];
+        this.disableMulDel = true;
+        this.rootCheckbox = false;
+        this.showSnackBar("Selected Books Deleted Successfully!");
+        this.getAllBooks();
+    });
+  }
+
+  onRootCheckboxChange() {
+    if(this.rootCheckbox) {
+      for(let i = 0; i < this.dataSource.length; i++) {
+        this.dataSource[i].checked = true;
+        let index = this.selectedBooks.indexOf(this.dataSource[i].id);
+        if(index == -1) {
+          this.selectedBooks.push(this.dataSource[i].id);
+        }
+      }
+    } else {
+      for(let i = 0; i < this.dataSource.length; i++) {
+        this.dataSource[i].checked = false;
+        this.selectedBooks = [];
+      }
+    }
+    this.disableMulDel = this.selectedBooks.length > 0 ? false : true;
+  }
+
+  onSingleCheckboxChange(checked, id) {
+    let index = this.selectedBooks.indexOf(id);
+    if(checked) {
+      if(index == -1) {
+        this.selectedBooks.push(id);
+      }
+    } else {
+      this.selectedBooks.splice(index, 1);
+    }
+    this.rootCheckbox = this.selectedBooks.length == this.dataSource.length ? true : false;
+    this.disableMulDel = this.selectedBooks.length > 0 ? false : true;
   }
 }

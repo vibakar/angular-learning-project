@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,10 @@ export class BooksService {
 
   deleteBook(id) {
   	return this.http.delete(`${this.configUrl}/${id}`);
+  }
+
+  delMulBook(ids) {
+    let requests = ids.map(id => this.deleteBook(id));
+    return forkJoin(requests);
   }
 }

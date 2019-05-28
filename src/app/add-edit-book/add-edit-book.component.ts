@@ -13,7 +13,7 @@ import Book from '../models/book';
 export class AddEditBookComponent implements OnInit {
   maxDate = new Date();
   genres: string[] = ["Action","Adventure", "Drama", "Fiction", "Fantasy", "Horror", "Humor", "Romance"];
-  formats: string[] = ["Format1", "Format2", "Format3"];
+  formats: string[] = ["Ebook", "Hard Cover", "Paper Back", "Audio Book"];
   newBook = {
     "title": "",
     "author": "",

@@ -1,3 +1,4 @@
-<p>Are you sure to delete "{{data.title}}" ?</p>
- <button mat-button (click)="cancel('yes')">Ok</button>
- <button mat-button color="primary" cdkFocusInitial (click)="cancel('no')">Cancel</button>
+<p *ngIf="data.title">Are you sure to delete "{{data.title}}" ?</p>
+<p *ngIf="!data.title">Are you sure to delete the selected books?</p>
+<button mat-button (click)="cancel('yes')">Ok</button>
+<button mat-button color="primary" cdkFocusInitial (click)="cancel('no')">Cancel</button>
