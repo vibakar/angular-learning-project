@@ -3,46 +3,48 @@
     <span *ngIf="!bookId">Add Book</span>
     <span *ngIf="bookId">Edit Book</span>
   </h1>
-  <mat-form-field>
-    <input type="text" matInput placeholder="Title" [(ngModel)]="newBook.title">
-  </mat-form-field>
+  <form #bookForm="ngForm">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Title" [(ngModel)]="newBook.title" name="title" #title="ngModel" required>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" matInput placeholder="Author" [(ngModel)]="newBook.author">
-  </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Author" [(ngModel)]="newBook.author" name="author" required>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="number" matInput placeholder="ISBN" [(ngModel)]="newBook.isbn">
-  </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="ISBN" [(ngModel)]="newBook.isbn" name="isbn" required> 
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="dp" [max]="maxDate" placeholder="Publication Date" [(ngModel)]="selectedPublicationDate" disabled>
-    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-    <mat-datepicker #dp disabled="false"></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dp" [max]="maxDate" placeholder="Publication Date" [(ngModel)]="selectedPublicationDate" name="publicationDate" required>
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp disabled="false"></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" matInput placeholder="Publisher" [(ngModel)]="newBook.publisher">
-  </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Publisher" [(ngModel)]="newBook.publisher" name="publisher" required>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="number" matInput placeholder="Price" [(ngModel)]="newBook.price">
-  </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Price" [(ngModel)]="newBook.price" name="price" required>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Genre" [(ngModel)]="newBook.genre">
-      <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Genre" [(ngModel)]="newBook.genre" name="genre" required>
+        <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Format" [(ngModel)]="newBook.format">
-      <mat-option *ngFor="let format of formats" [value]="format">{{format}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Format" [(ngModel)]="newBook.format" name="format" required>
+        <mat-option *ngFor="let format of formats" [value]="format">{{format}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>
 <div class="form-buttons">
 	<button mat-raised-button color="accent" (click)="cancel()">Cancel</button>&nbsp;
-	<button mat-raised-button *ngIf="!bookId" color="primary" (click)="addBook()">Add Book</button>
+	<button mat-raised-button *ngIf="!bookId" color="primary" (click)="addBook()" [disabled]="bookForm.invalid">Add Book</button>
   <button mat-raised-button *ngIf="bookId" color="primary" (click)="editBook()">Update Book</button>
 </div>

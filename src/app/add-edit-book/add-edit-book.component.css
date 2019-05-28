@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.add-book > * {
+mat-form-field {
   width: 100%;
 }
 
