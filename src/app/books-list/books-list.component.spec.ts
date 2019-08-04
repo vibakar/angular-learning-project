@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BooksFilterPipe } from '../pipes/books-filter.pipe';
@@ -34,7 +34,7 @@ describe('BooksList Component', () => {
         MatCheckboxModule,
         MatSnackBarModule,
         RouterTestingModule,
-        HttpClientModule
+        HttpClientTestingModule
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       providers: [
@@ -54,4 +54,9 @@ describe('BooksList Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have 11 columns in table', () => {
+    expect(component.columns.length).toEqual(11);
+  });
+
 });
