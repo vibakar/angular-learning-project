@@ -14,6 +14,7 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 export class BooksListComponent implements OnInit {
   columns: string[] = ['Checkbox', 'Title', 'Author', 'ISBN', 'Publication Date', 'Publisher', 'Price', 'Genre', 'Format', 'Edit', 'Delete'];
   dataSource: Book[] = [];
+  customize:boolean;
   availableFields: any[] = [{
     name: "Title",
     checked: true
