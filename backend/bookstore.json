@@ -1,0 +1,37 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "The Jungle Book",
+      "author": "Rudyard Kipling",
+      "isbn": "9788379030651",
+      "publicationDate": "1/11/1985",
+      "publisher": "Macmillan Publishers",
+      "price": "195",
+      "genre": "Adventure",
+      "format": "Ebook"
+    },
+    {
+      "id": 2,
+      "title": "The Selfish Giant",
+      "author": "Oscar Wilde",
+      "isbn": "8793890730659",
+      "publicationDate": "1/11/1888",
+      "publisher": "Independent Publishers",
+      "price": "320",
+      "genre": "Action",
+      "format": "Hard Cover"
+    },
+    {
+      "id": 3,
+      "title": "The Happy Prince",
+      "author": "Oscar Wilde",
+      "isbn": "9278379237120",
+      "publicationDate": "23/5/1888",
+      "publisher": "Independent Publishers",
+      "price": "285",
+      "genre": "Fiction",
+      "format": "Ebook"
+    }
+  ]
+}

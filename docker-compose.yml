@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: ./
+    volumes:
+      - ./src:/app/src
+    networks:
+      - public
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+  backend:
+    build: ./backend
+    networks:
+      - public
+    ports:
+      - "3000:3000"
+
+networks:
+  private:
+    driver: bridge
+  public:
+    driver: bridge
