@@ -6,7 +6,7 @@ import { forkJoin } from 'rxjs';
   providedIn: 'root'
 })
 export class BooksService {
-  configUrl:string = "http://localhost:3000/books";
+  configUrl:string = `http://${window.location.hostname}:3000/books`;
   constructor(private http:HttpClient) { }
 
   getAllBooks() {
